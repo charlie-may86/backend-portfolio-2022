@@ -1,12 +1,13 @@
-exports.up = function (knex) {
-  return knex.schema.createTable("fruits", (tbl) => {
-    tbl.increments(); // leave blank and automatically makes auto inc PK
-    tbl.text("fruit_name", 256).unique().notNullable();
-    tbl.float("avg_weight").notNullable();
-    tbl.boolean("is_delicious").default(true);
+exports.up = async function (knex) {
+  await knex.schema.createTable("users", (tbl) => {
+    tbl.increments("user_id");
+    // tbl.string("username", 200).notNullable();
+    tbl.string("password", 200).notNullable();
+    tbl.string("email", 200).notNullable().unique();
+    tbl.timestamps(false, true);
   });
 };
 
-exports.down = function (knex) {
-  return knex.schema.dropTableIfExists("fruits");
+exports.down = async function (knex) {
+  await knex.schema.dropTableIfExists("users");
 };

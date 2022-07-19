@@ -1,19 +1,19 @@
 const express = require("express");
 const server = express();
+const cors = require("cors");
+
 server.use(express.json());
+server.use(cors());
 
 const cfbRouter = require("./sports/cfb-router");
 
 server.use("/api/cfb", cfbRouter);
 
-
 server.use("*", (req, res, next) => {
   console.log(`hitting ${req.method} and ${req.baseUrl}`);
-  res
-    .status(401)
-    .send({
-      message: `Hey. You are hitting my sports app. But probably not the rigth way.`,
-    });
+  res.status(401).send({
+    message: `Hey. You are hitting my sports app. But probably not the rigth way.`,
+  });
 });
 
 server.use("/", (req, res, next) => {
