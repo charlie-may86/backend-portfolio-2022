@@ -6,8 +6,10 @@ server.use(express.json());
 server.use(cors());
 
 const cfbRouter = require("./sports/cfb-router");
+const userRouter = require("./users/users-router");
 
 server.use("/api/cfb", cfbRouter);
+server.use("/api/users", userRouter);
 
 server.use("*", (req, res, next) => {
   console.log(`hitting ${req.method} and ${req.baseUrl}`);
