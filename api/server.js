@@ -7,9 +7,11 @@ server.use(cors());
 
 const cfbRouter = require("./sports/cfb-router");
 const userRouter = require("./users/users-router");
+const authRouter = require("./auth/auth-router");
 
 server.use("/api/cfb", cfbRouter);
 server.use("/api/users", userRouter);
+server.use("/api/auth", authRouter);
 
 server.use("*", (req, res, next) => {
   console.log(`hitting ${req.method} and ${req.baseUrl}`);
