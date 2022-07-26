@@ -1,25 +1,26 @@
 const nodemailer = require("nodemailer");
-const { NODE_SECRET } = require("../../config/secrets");
+const { NODE_MAILER_SECRET } = require("../../config/secrets");
 
-const tranporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   serverice: "gmail",
   auth: {
-    user: "admin@charles-may.xyz",
-    password: NODE_SECRET,
+    user: "cmay_pickem@outlook.com",
+    password: NODE_MAILER_SECRET,
   },
 });
 
 const options = {
-  from: "admin@charles-may.xyz",
-  to: "charlie@charles-may.xyz",
+  from: "cmay_pickem@outlook.com",
+  to: "camiv95@gmail.com",
   subject: "Password reset testing",
   text: "wow! It worked ;)",
 };
 
-transporter.sendMail(options, () => {
+transporter.sendMail(options, function (err, info) {
   if (err) {
     console.log(err);
     return;
   }
   console.log(info.response);
 });
+
