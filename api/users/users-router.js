@@ -29,10 +29,10 @@ router.delete("/delete/:id", userOnly, async (req, res, next) => {
 
 router.post("/password_reset", (req, res, next) => {
   const transporter = nodemailer.createTransport({
-    service: "outlook",
+    service: "hotmail",
     auth: {
       user: "cmay_pickem@outlook.com",
-      pass: NODE_MAILER_SECRET,
+      pass: 'Budwiser95!',
     },
   });
 
@@ -46,10 +46,10 @@ router.post("/password_reset", (req, res, next) => {
   transporter.sendMail(mailData, (error, info) => {
     if (error) {
       console.log(error);
-      return
+      return;
     } else {
       console.log("Email sent: " + info.response);
-      return
+      return;
     }
   });
 });
