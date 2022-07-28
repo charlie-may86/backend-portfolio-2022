@@ -5,14 +5,14 @@ const nodemailer = require("nodemailer");
 
 const { userOnly } = require("./user-middleware");
 
-router.get("/", async (req, res, next) => {
-  try {
-    const users = await Users.getAllUsers();
-    res.status(200).json(users);
-  } catch (err) {
-    next(err);
-  }
-});
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const users = await Users.getAllUsers();
+//     res.status(200).json(users);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 router.delete("/delete/:id", userOnly, async (req, res, next) => {
   const { id } = req.params;
