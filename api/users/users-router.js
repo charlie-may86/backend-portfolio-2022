@@ -27,7 +27,7 @@ router.delete("/delete/:id", userOnly, async (req, res, next) => {
 });
 
 router.post("/password_reset", (req, res, next) => {
-  const { to, subject, text } = req.body;
+  const { email } = req.body;
   const transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
@@ -38,9 +38,9 @@ router.post("/password_reset", (req, res, next) => {
 
   const mailData = {
     from: "cmay_pickem@outlook.com",
-    to: to,
-    subject: subject,
-    text: text,
+    to: email,
+    subject: "Charlie May Acarde Password Reset",
+    text: `Isn't that just special`,
   };
 
   transporter.sendMail(mailData, (error, info) => {

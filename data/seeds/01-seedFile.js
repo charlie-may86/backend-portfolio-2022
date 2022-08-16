@@ -11,6 +11,15 @@ const users = [
   },
 ];
 
+const picks = [
+  {
+    username: "spacecowboy",
+    winner: "NEBR",
+    spread: "16",
+  },
+];
+
 exports.seed = async function (knex) {
   await knex("users").insert(users);
+  await knex("picks").insert(picks);
 };
