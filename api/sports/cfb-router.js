@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
+const Picks = require("./cfb-model");
 
 router.get("/", async (req, res, next) => {
   const options = {
@@ -21,6 +22,21 @@ router.get("/", async (req, res, next) => {
   try {
     const schedule = await getSchedule();
     res.status(201).json(schedule.data);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/pickem", async (req, res, next) => {
+  try {
+    const { username, winner, spread } = req.body;
+    const addPick = {
+      username,
+      winner,
+      spread,
+    };
+    const newPick = await Picks.addPick(addPick);
+    res.status(201).json(newPick);
   } catch (err) {
     next(err);
   }
