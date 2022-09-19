@@ -14,6 +14,12 @@ exports.up = async function (knex) {
     tbl.string("winner", 200).notNullable();
     tbl.string("spread", 200).notNullable();
   });
+
+  await knex.schema.createTable("chess", (tbl) => {
+    tbl.increments("pick_id");
+    tbl.string("username", 3);
+    tbl.string("time").notNullable();
+  });
 };
 
 exports.down = async function (knex) {

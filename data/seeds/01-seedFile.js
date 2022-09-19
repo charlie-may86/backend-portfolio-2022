@@ -19,7 +19,15 @@ const picks = [
   },
 ];
 
+const results = [
+  {
+    username: "CAM",
+    time: "30",
+  },
+];
+
 exports.seed = async function (knex) {
   await knex("users").insert(users);
   await knex("picks").insert(picks);
+  await knex("chess").insert(results);
 };
