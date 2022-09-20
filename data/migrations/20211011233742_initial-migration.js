@@ -18,7 +18,8 @@ exports.up = async function (knex) {
   await knex.schema.createTable("chess", (tbl) => {
     tbl.increments("result_id");
     tbl.string("username", 3);
-    tbl.string("time").notNullable();
+    tbl.float("time").notNullable();
+    tbl.string("game_length").notNullable();
   });
 };
 

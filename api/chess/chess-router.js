@@ -13,8 +13,8 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const { username, time } = req.body;
-    const newResult = { username, time };
+    const { username, time, game_length } = req.body;
+    const newResult = { username, time, game_length };
     const createNewResult = await Results.addResult(newResult);
     res.status(201).json(createNewResult);
   } catch (err) {

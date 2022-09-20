@@ -7,7 +7,7 @@ module.exports = {
 };
 
 function getResults() {
-  return db("chess").select("username", "time");
+  return db("chess").select("username", "time", "game_length");
 }
 
 async function addResult(result) {

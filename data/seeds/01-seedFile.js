@@ -23,6 +23,7 @@ const results = [
   {
     username: "CAM",
     time: "30",
+    game_length: "8",
   },
 ];
 
