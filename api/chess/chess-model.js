@@ -28,7 +28,7 @@ function findById(result_id) {
 
 function getWhiteEight() {
   return db("chess")
-    .select("username", "time")
+    .select("username", "time", 'result_id')
     .where("game_length", "8")
     .orderBy("time", "asc")
     .limit(10);
