@@ -4,6 +4,7 @@ module.exports = {
   getResults,
   addResult,
   findById,
+  getWhiteEight,
 };
 
 function getResults() {
@@ -17,4 +18,18 @@ async function addResult(result) {
 
 function findById(result_id) {
   return db("chess").where("result_id", result_id).first();
+}
+
+// select *
+// from chess
+// where game_length = '8'
+// order by time asc
+// limit 10
+
+function getWhiteEight() {
+  return db("chess")
+    .select("username", "time")
+    .where("game_length", "8")
+    .orderBy("time", "asc")
+    .limit(10);
 }

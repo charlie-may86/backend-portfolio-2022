@@ -11,6 +11,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/white/eight", async (req, res, next) => {
+  try {
+    const results = await Results.getWhiteEight();
+    res.status(200).json(results);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/", async (req, res, next) => {
   try {
     const { username, time, game_length } = req.body;
