@@ -15,14 +15,14 @@ server.use("/api/users", userRouter);
 server.use("/api/auth", authRouter);
 server.use("/api/chess", chessRouter);
 
-server.use("*", (req, res, next) => {
+server.use("*", (req, res) => {
   console.log(`hitting ${req.method} and ${req.baseUrl}`);
   res.status(401).send({
     message: `Hey. You are hitting my sports app. But probably not the rigth way.`,
   });
 });
 
-server.use("/", (req, res, next) => {
+server.use("/", (req, res) => {
   res.send("<h1>Hey There good Looking<h1>");
 });
 

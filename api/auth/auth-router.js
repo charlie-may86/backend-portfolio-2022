@@ -7,7 +7,6 @@ const {
   checkUniqueUsername,
   checkNewUser,
 } = require("./auth-middleware");
-const Users = require("../users/users-model");
 
 router.post(
   "/register",
